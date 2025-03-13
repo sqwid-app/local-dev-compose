@@ -9,6 +9,20 @@ To ensure optimal performance, your system should meet the following minimum req
 - **RAM:** 8GB or more
 - **Storage:** SSD with at least 20GB of free space
 
+## Prerequisites
+Before running the Sqwid Marketplace, you need to set up the required environment variables. Follow these steps:
+
+### Setting Up Environment Variables
+1. Navigate to the respective directories:
+   - `indexer/`
+   - `server/dev/`
+2. Copy the `.env.sample` file in each directory and rename it to `.env`:
+   ```sh
+   cp indexer/.env.sample indexer/.env
+   cp server/dev/.env.sample server/dev/.env
+   ```
+3. Open each `.env` file and replace the placeholder values with the required environment variables.
+
 ## Running Sqwid Marketplace
 
 ### To Run Mainnet Dev Sqwid
@@ -40,3 +54,4 @@ If you need to stop all running Docker containers:
 ```sh
 ./scripts/kill.sh
 ```
+
