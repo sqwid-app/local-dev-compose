@@ -8,4 +8,4 @@ RUN apt-get update && apt-get install -y curl && \
 
 EXPOSE 30333 9933 9944 9615
 
-CMD ["./reef-node", "--dev"]
+CMD ["./reef-node", "--dev", "--rpc-external", "--ws-external"]
