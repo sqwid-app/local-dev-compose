@@ -1,0 +1,57 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: server/dev/Dockerfile
+    ports:
+      - "80:80"
+    restart: always
+    networks:
+      - sqwid-network
+  
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: sqwid_marketplace
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: my_secret_password
+    ports:
+      - "23799:5432"
+    shm_size: 1gb
+    networks:
+      - sqwid-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d sqwid_marketplace"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+  
+  indexer:
+    depends_on:
+      db:
+        condition: service_healthy
+    build:
+      context: .
+      dockerfile: indexer/Dockerfile
+    ports:
+      - "3001:3001"
+      - "4350:4350"
+    restart: always
+    networks:
+      - sqwid-network
+
+  client:
+    build:
+      context: .
+      dockerfile: client/dev/Dockerfile
+    ports:
+      - "3000:3000"
+    restart: always
+    networks:
+      - sqwid-network
+
+networks:
+  sqwid-network:
+    driver: bridge
