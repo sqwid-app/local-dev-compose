@@ -52,18 +52,18 @@ services:
     networks:
       - sqwid-network
 
-  reef-node:
-    build:
-      context: .
-      dockerfile: reef-node/Dockerfile
-    ports:
-      - "30333:30333"
-      - "9933:9933"
-      - "9944:9944"
-      - "9615:9615"
-    restart: always
-    networks:
-      - sqwid-network
+  # reef-node:
+  #   build:
+  #     context: .
+  #     dockerfile: reef-node/Dockerfile
+  #   ports:
+  #     - "30333:30333"
+  #     - "9933:9933"
+  #     - "9944:9944"
+  #     - "9615:9615"
+  #   restart: always
+  #   networks:
+  #     - sqwid-network
 
 networks:
   sqwid-network:
