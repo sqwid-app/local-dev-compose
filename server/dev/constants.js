@@ -40,7 +40,7 @@ const networks = {
         },
         useCache: false,
         graphql_api_explorer: 'https://squid.subsquid.io/reef-explorer/graphql',
-        graphql_api_marketplace: 'http://localhost:4000/graphql',
+        graphql_api_marketplace: 'http://localhost:4350/graphql',
     }
 }
 
