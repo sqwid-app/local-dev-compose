@@ -1,10 +1,9 @@
 FROM node:18-alpine
 
-RUN apk add --no-cache python3 py3-pip make g++ 
+RUN apk add --no-cache python3 py3-pip make g++ git
 
 WORKDIR /app
-
-COPY /indexer/package.json /indexer/package-lock.json ./
+RUN git clone https://github.com/sqwid-app/marketplace-indexer .
 RUN npm install
 
 COPY /indexer .
