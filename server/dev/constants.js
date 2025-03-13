@@ -23,7 +23,7 @@ const networks = {
         graphql_api_marketplace: 'http://squid.subsquid.io/sqwid-marketplace-testnet/graphql',
     },
     [MAINNET]: {
-        rpc: 'wss://rpc.reefscan.com/ws',
+        rpc: process.env.WS_URL??'wss://rpc.reefscan.com/ws',
         contracts: {
             marketplace: "0x8E03791B24b0AABd288986BE002729141741207f",
             erc1155: "0x2882b731a0bff8EfA312b32f11075391396c6e8d",
@@ -40,7 +40,7 @@ const networks = {
         },
         useCache: false,
         graphql_api_explorer: 'https://squid.subsquid.io/reef-explorer/graphql',
-        graphql_api_marketplace: 'http://localhost:4350/graphql',
+        graphql_api_marketplace: process.env.MARKETPLACE_SQWID_URL,
     }
 }
 
@@ -57,7 +57,7 @@ const config = {
             marketplaceContractAddress: '0x8E03791B24b0AABd288986BE002729141741207f',
             nftContractAddress: '0x2882b731a0bff8EfA312b32f11075391396c6e8d',
             explorerGraphqlUrl: 'https://squid.subsquid.io/reef-explorer/graphql',
-            marketplaceGraphqlUrl: 'https://squid.subsquid.io/sqwid-marketplace/graphql',
+            marketplaceGraphqlUrl: process.env.MARKETPLACE_SQWID_URL,
           }
     }
 
